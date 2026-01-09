@@ -27,12 +27,14 @@ SET time_zone = "+00:00";
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  'id' int(11) NOT NULL,
-  'name' varchar(150) NOT NULL,
-
-)
-
+CREATE TABLE users (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `name` VARCHAR(150) NOT NULL,
+  `email` VARCHAR(150) NOT NULL UNIQUE,
+  `password` VARCHAR(255) NOT NULL,
+  `role` VARCHAR(50) DEFAULT 'user',
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Table structure for table `menus`
@@ -66,6 +68,11 @@ INSERT INTO `menus` (`id_produk`, `nama_produk`, `stok`, `harga`) VALUES
 ALTER TABLE `menus`
   ADD PRIMARY KEY (`id_produk`);
 COMMIT;
+
+ALTER TABLE menus
+  ADD COLUMN created_by INT NULL AFTER harga,
+  ADD INDEX idx_created_by (created_by),
+  ADD CONSTRAINT fk_menus_users FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
