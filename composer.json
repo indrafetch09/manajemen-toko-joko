@@ -1,0 +1,17 @@
+{
+    "name": "kyarch/manajemen-toko-joko",
+    "autoload": {
+        "psr-4": {
+            "Kyarch\\ManajemenTokoJoko\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "indrafetch09",
+            "email": "harindrawahyu131@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
