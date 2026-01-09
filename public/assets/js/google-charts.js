@@ -1,27 +1,27 @@
 // Region Charts Starts
 
 google.charts.load('current', {
-  'packages': ['geochart'],
+  'packages': [ 'geochart' ],
   // Note: you will need to get a mapsApiKey for your project.
   // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-  'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+  'mapsApiKey': window.GMAPS_API_KEY || ''
 });
 google.charts.setOnLoadCallback(drawRegionsMap);
 
 function drawRegionsMap() {
   var data = google.visualization.arrayToDataTable([
-    ['Country', 'Popularity'],
-    ['Germany', 200],
-    ['United States', 300],
-    ['Brazil', 400],
-    ['Canada', 500],
-    ['France', 600],
-    ['RU', 700]
+    [ 'Country', 'Popularity' ],
+    [ 'Germany', 200 ],
+    [ 'United States', 300 ],
+    [ 'Brazil', 400 ],
+    [ 'Canada', 500 ],
+    [ 'France', 600 ],
+    [ 'RU', 700 ]
   ]);
 
   var options = {
     colorAxis: {
-      colors: ['#76C1FA', '#63CF72', '#F36368', '#FABA66']
+      colors: [ '#76C1FA', '#63CF72', '#F36368', '#FABA66' ]
     }
   };
   var chart = new google.visualization.GeoChart(document.getElementById('regions-chart'));
@@ -35,18 +35,18 @@ function drawRegionsMap() {
 // Bar Charts Starts
 
 google.charts.load('current', {
-  'packages': ['bar']
+  'packages': [ 'bar' ]
 });
 google.charts.setOnLoadCallback(drawStuff);
 
 function drawStuff() {
   var data = new google.visualization.arrayToDataTable([
-    ['Opening Move', 'Percentage'],
-    ["King's pawn (e4)", 44],
-    ["Queen's pawn (d4)", 31],
-    ["Knight to King 3 (Nf3)", 12],
-    ["Queen's bishop pawn (c4)", 10],
-    ['Other', 3]
+    [ 'Opening Move', 'Percentage' ],
+    [ "King's pawn (e4)", 44 ],
+    [ "Queen's pawn (d4)", 31 ],
+    [ "Knight to King 3 (Nf3)", 12 ],
+    [ "Queen's bishop pawn (c4)", 10 ],
+    [ 'Other', 3 ]
   ]);
 
   var options = {
@@ -54,13 +54,13 @@ function drawStuff() {
     legend: {
       position: 'none'
     },
-    colors: ['#76C1FA'],
+    colors: [ '#76C1FA' ],
 
     chartArea: {
       width: 401
     },
     hAxis: {
-      ticks: [-1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1]
+      ticks: [ -1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1 ]
     },
     bar: {
       gap: 0
@@ -86,20 +86,20 @@ function drawStuff() {
 (function ($) {
 
   google.charts.load("current", {
-    packages: ["corechart"]
+    packages: [ "corechart" ]
   });
   google.charts.setOnLoadCallback(drawChart);
 
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
-      ['Quarks', 'Leptons', 'Gauge Bosons', 'Scalar Bosons'],
-      [2 / 3, -1, 0, 0],
-      [2 / 3, -1, 0, null],
-      [2 / 3, -1, 0, null],
-      [-1 / 3, 0, 1, null],
-      [-1 / 3, 0, -1, null],
-      [-1 / 3, 0, null, null],
-      [-1 / 3, 0, null, null]
+      [ 'Quarks', 'Leptons', 'Gauge Bosons', 'Scalar Bosons' ],
+      [ 2 / 3, -1, 0, 0 ],
+      [ 2 / 3, -1, 0, null ],
+      [ 2 / 3, -1, 0, null ],
+      [ -1 / 3, 0, 1, null ],
+      [ -1 / 3, 0, -1, null ],
+      [ -1 / 3, 0, null, null ],
+      [ -1 / 3, 0, null, null ]
     ]);
 
     var options = {
@@ -108,7 +108,7 @@ function drawStuff() {
         position: 'top',
         maxLines: 2
       },
-      colors: ['#76C1FA', '#63CF72', '#F36368', '#FABA66'],
+      colors: [ '#76C1FA', '#63CF72', '#F36368', '#FABA66' ],
       interpolateNulls: false,
       chartArea: {
         width: 401
@@ -128,17 +128,17 @@ function drawStuff() {
 (function ($) {
 
   google.charts.load('current', {
-    'packages': ['corechart']
+    'packages': [ 'corechart' ]
   });
   google.charts.setOnLoadCallback(drawChart);
 
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
-      ['Year', 'Sales', 'Expenses'],
-      ['2013', 1000, 400],
-      ['2014', 1170, 460],
-      ['2015', 660, 1120],
-      ['2016', 1030, 540]
+      [ 'Year', 'Sales', 'Expenses' ],
+      [ '2013', 1000, 400 ],
+      [ '2014', 1170, 460 ],
+      [ '2015', 660, 1120 ],
+      [ '2016', 1030, 540 ]
     ]);
 
     var options = {
@@ -149,7 +149,7 @@ function drawStuff() {
           color: '#333'
         }
       },
-      colors: ['#76C1FA', '#63CF72', '#F36368', '#FABA66'],
+      colors: [ '#76C1FA', '#63CF72', '#F36368', '#FABA66' ],
       chartArea: {
         width: 500
       },
@@ -170,24 +170,24 @@ function drawStuff() {
 // Donut Chart Starts
 
 google.charts.load("current", {
-  packages: ["corechart"]
+  packages: [ "corechart" ]
 });
 google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
   var data = google.visualization.arrayToDataTable([
-    ['Task', 'Hours per Day'],
-    ['Work', 12],
+    [ 'Task', 'Hours per Day' ],
+    [ 'Work', 12 ],
     // ['Eat', 2],
-    ['Commute', 2],
-    ['Watch TV', 2],
-    ['Sleep', 7]
+    [ 'Commute', 2 ],
+    [ 'Watch TV', 2 ],
+    [ 'Sleep', 7 ]
   ]);
 
   var options = {
     // title: 'My Daily Activities',
     pieHole: 0.2,
-    colors: ['#76C1FA', '#63CF72', '#F36368', '#FABA66'],
+    colors: [ '#76C1FA', '#63CF72', '#F36368', '#FABA66' ],
     // chartArea: { left: 0, top: 0, width: "100%", height: "50%" },
     height: 300,
     // width: 300,
@@ -205,17 +205,17 @@ function drawChart() {
 (function ($) {
 
   google.charts.load('current', {
-    'packages': ['corechart']
+    'packages': [ 'corechart' ]
   });
   google.charts.setOnLoadCallback(drawChart);
 
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
-      ['Year', 'Sales', 'Expenses'],
-      ['2004', 1000, 400],
-      ['2005', 1170, 460],
-      ['2006', 660, 1120],
-      ['2007', 1030, 540]
+      [ 'Year', 'Sales', 'Expenses' ],
+      [ '2004', 1000, 400 ],
+      [ '2005', 1170, 460 ],
+      [ '2006', 660, 1120 ],
+      [ '2007', 1030, 540 ]
     ]);
 
     var options = {
@@ -224,7 +224,7 @@ function drawChart() {
       legend: {
         position: 'bottom'
       },
-      colors: ['#76C1FA', '#63CF72', '#F36368', '#FABA66'],
+      colors: [ '#76C1FA', '#63CF72', '#F36368', '#FABA66' ],
       chartArea: {
         width: 500
       },

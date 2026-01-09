@@ -16,6 +16,24 @@
   <link rel="stylesheet" href="assets/css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="assets/images/favicon.png" />
+  <?php
+  $gmaps_key = '';
+  $autoload = __DIR__ . '/../vendor/autoload.php';
+  if (file_exists($autoload)) {
+    require_once $autoload;
+    try {
+      $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+      $dotenv->safeLoad();
+    } catch (Exception $e) {
+    }
+    $gmaps_key = getenv('GMAPS_API_KEY') ?: '';
+  } else {
+    $gmaps_key = getenv('GMAPS_API_KEY') ?: '';
+  }
+  ?>
+  <script>
+    window.GMAPS_API_KEY = '<?php echo htmlspecialchars($gmaps_key, ENT_QUOTES); ?>';
+  </script>
 </head>
 
 <body>
