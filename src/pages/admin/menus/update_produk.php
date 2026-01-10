@@ -12,5 +12,5 @@ $query = mysqli_query($koneksi, "UPDATE menus SET
         harga='$harga'
         WHERE id_produk='$id_produk'");
 
-header('location:')
+header('location:index.php')
 ?>

@@ -1,5 +1,5 @@
 <?php
-include "index.php";
+include "database.php";
 $id_produk=$_POST['id_produk'];
 $nama_produk=$_POST['nama_produk'];
 $stok=$_POST['stok'];
