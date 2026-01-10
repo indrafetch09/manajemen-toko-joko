@@ -2,30 +2,22 @@
 
 use Dotenv\Dotenv;
 
-// --- PERBAIKAN SAKIKO ---
-// Kita tentukan root folder (mundur 2 langkah dari src/config atau sejenisnya)
-// Jika file ini ada di 'src/config/', maka '/../../' akan membawanya ke root project.
-$root = __DIR__ . '/../../';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
-// Load Autoload dari root
-require_once $root . 'vendor/autoload.php';
-
-// Load .env file validation
+// load .env file validation
 try {
-    // PENTING: Beri tahu Dotenv bahwa file .env ada di folder $root, bukan di sini.
-    $dotenv = Dotenv::createImmutable($root);
+    $dotenv = Dotenv::createImmutable(__DIR__);
     $dotenv->load();
 } catch (\Dotenv\Exception\InvalidPathException $e) {
-    // Tampilkan pesan error lengkap biar gampang debugging
-    die("Gawat! File .env tidak ditemukan di jalur ini: " . realpath($root) . ". Error: " . $e->getMessage());
+    die("Invalid load .env file " . $e->getMessage());
 }
 
-// setting .env (Menggunakan null coalescing operator '??' biar gak error kalau kosong)
-$dbhost = $_ENV["DB_HOST"] ?? '127.0.0.1';
-$dbname = $_ENV["DB_NAME"] ?? 'toko_joko';
-$dbuser = $_ENV["DB_USER"] ?? 'root';
-$dbpass = $_ENV["DB_PASS"] ?? '';
-$dbport = $_ENV["DB_PORT"] ?? '3306';
+// setting .env
+$dbhost = $_ENV["DB_HOST"];
+$dbname = $_ENV["DB_NAME"];
+$dbuser = $_ENV["DB_USER"];
+$dbpass = $_ENV["DB_PASS"];
+$dbport = $_ENV["DB_PORT"];
 
 $dsn = "mysql:host=$dbhost;port=$dbport;dbname=$dbname;charset=utf8mb4";
 
@@ -38,9 +30,7 @@ $options = [
 // validate the conn with PDO
 try {
     $pdo = new PDO($dsn, $dbuser, $dbpass, $options);
-    // Baris di bawah ini bisa dikomentari/hapus nanti kalau sudah sukses, biar gak mengganggu tampilan JSON/HTML
-    // echo "database connected successfull"; 
+    echo "database connected successfull";
 } catch (\PDOException $e) {
-    // Jangan tampilkan error asli ke user publik di production, tapi untuk dev oke.
-    die("Koneksi Database Gagal: " . $e->getMessage());
+    throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
