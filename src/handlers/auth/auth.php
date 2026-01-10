@@ -36,10 +36,14 @@ function jwt_decode_token(string $token)
 function get_bearer_token()
 {
     if (!empty($_COOKIE['token'])) return $_COOKIE['token'];
-    $h = apache_request_headers() ?: [];
-    $auth = $h['Authorization'] ?? ($h['authorization'] ?? null);
+    $authHeader = null;
+    if (function_exists('apache_request_headers')) {
+        $h = apache_request_headers();
+        $authHeader = $h['Authorization'] ?? ($h['authorization'] ?? null);
+    }
+    $authHeader = $authHeader ?? ($_SERVER['HTTP_AUTHORIZATION'] ?? null);
 
-    if ($auth && preg_match('/Bearer\s(\S+)/', $auth, $m)) return $m[1];
+    if ($authHeader && preg_match('/Bearer\s(\S+)/', $authHeader, $m)) return $m[1];
     return null;
 }
 
@@ -57,5 +61,25 @@ function require_auth()
         exit('Invalid Token');
     }
 
-    return $decoded->sub;
+    return $decoded;
+}
+
+// non-fatal helper: return decoded payload object or null
+function current_token_payload()
+{
+    $token = get_bearer_token();
+    if (!$token) return null;
+    return jwt_decode_token($token);
+}
+
+// require admin role; exits with 403 if not admin, returns decoded payload on success
+function require_admin()
+{
+    $decoded = require_auth();
+    $role = $decoded->role ?? null;
+    if ($role !== 'admin') {
+        http_response_code(403);
+        exit('Forbidden');
+    }
+    return $decoded;
 }
