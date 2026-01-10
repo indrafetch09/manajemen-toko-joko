@@ -7,15 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Joko Admin</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+  <?php require_once __DIR__ . '/../../../config/paths.php'; ?>
+  <link rel="stylesheet" href="<?php echo asset('vendors/mdi/css/materialdesignicons.min.css'); ?>">
+  <link rel="stylesheet" href="<?php echo asset('vendors/css/vendor.bundle.base.css'); ?>">
   <!-- endinject -->
   <!-- Plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="assets/css/vertical-layout-light/style.css">
+  <link rel="stylesheet" href="<?php echo asset('css/vertical-layout-light/style.css'); ?>">
   <!-- endinject -->
-  <link rel="shortcut icon" href="assets/images/favicon.ico" />
+  <link rel="shortcut icon" href="<?php echo asset('images/favicon.ico'); ?>" />
   <?php
   $gmaps_key = '';
   $autoload = __DIR__ . '/../vendor/autoload.php';
@@ -41,8 +42,8 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg"
+        <a class="navbar-brand brand-logo" href="index.html"><img src="<?php echo asset('images/logo.svg'); ?>" alt="logo" /></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="<?php echo asset('images/logo-mini.svg'); ?>"
             alt="logo" /></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
@@ -1163,21 +1164,21 @@
   <!-- container-scroller -->
 
   <!-- plugins:js -->
-  <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+  <script src="<?php echo asset('vendors/js/vendor.bundle.base.js'); ?>"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
-  <script src="assets/vendors/chart.js/chart.umd.js"></script>
-  <script src="assets/vendors/progressbar.js/progressbar.min.js"></script>
+  <script src="<?php echo asset('vendors/chart.js/chart.umd.js'); ?>"></script>
+  <script src="<?php echo asset('vendors/progressbar.js/progressbar.min.js'); ?>"></script>
   <!-- End plugin js for this page -->
   <!-- inject:js -->
-  <script src="assets/js/off-canvas.js"></script>
-  <script src="assets/js/hoverable-collapse.js"></script>
-  <script src="assets/js/template.js"></script>
-  <script src="assets/js/settings.js"></script>
-  <script src="assets/js/todolist.js"></script>
+  <script src="<?php echo asset('js/off-canvas.js'); ?>"></script>
+  <script src="<?php echo asset('js/hoverable-collapse.js'); ?>"></script>
+  <script src="<?php echo asset('js/template.js'); ?>"></script>
+  <script src="<?php echo asset('js/settings.js'); ?>"></script>
+  <script src="<?php echo asset('js/todolist.js'); ?>"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="assets/js/dashboard.js"></script>
+  <script src="<?php echo asset('js/dashboard.js'); ?>"></script>
   <!-- End custom js for this page-->
 </body>
 

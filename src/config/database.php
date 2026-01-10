@@ -30,6 +30,7 @@ $options = [
 // validate the conn with PDO
 try {
     $pdo = new PDO($dsn, $dbuser, $dbpass, $options);
+    echo "database connected successfull";
 } catch (\PDOException $e) {
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }

@@ -7,15 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Joko Admin | Register</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <?php require_once __DIR__ . '/../config/paths.php'; ?>
+    <link rel="stylesheet" href="<?php echo asset('vendors/mdi/css/materialdesignicons.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo asset('vendors/css/vendor.bundle.base.css'); ?>">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="assets/css/vertical-layout-light/style.css">
+    <link rel="stylesheet" href="<?php echo asset('css/vertical-layout-light/style.css'); ?>">
     <!-- endinject -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <link rel="shortcut icon" href="<?php echo asset('images/favicon.ico'); ?>" />
 </head>
 
 <body>
@@ -29,7 +30,7 @@
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                             <div class="brand-logo">
-                                <img src="assets/images/logo-black.svg" alt="logo">
+                                <img src="<?php echo asset('images/logo-black.svg'); ?>" alt="logo">
                             </div>
                             <h4>Hello! let's get started</h4>
                             <h6 class="fw-light">Sign in to continue.</h6>
@@ -71,16 +72,16 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="<?php echo asset('vendors/js/vendor.bundle.base.js'); ?>"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="assets/js/off-canvas.js"></script>
-    <script src="assets/js/hoverable-collapse.js"></script>
-    <script src="assets/js/template.js"></script>
-    <script src="assets/js/settings.js"></script>
-    <script src="assets/js/todolist.js"></script>
+    <script src="<?php echo asset('js/off-canvas.js'); ?>"></script>
+    <script src="<?php echo asset('js/hoverable-collapse.js'); ?>"></script>
+    <script src="<?php echo asset('js/template.js'); ?>"></script>
+    <script src="<?php echo asset('js/settings.js'); ?>"></script>
+    <script src="<?php echo asset('js/todolist.js'); ?>"></script>
     <!-- endinject -->
 </body>
 
