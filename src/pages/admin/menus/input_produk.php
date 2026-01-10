@@ -2,7 +2,7 @@
 <table border='1'>
     <tr>
         <td>ID Produk</td>
-        <td><input type="text" class="form-control form=control-sm" value="<?php echo $row['id_produk']?>name="id_produk"></td>
+        <td><input type="text" class="form-control form=control-sm" value="<?php echo $row['id_produk']?>"name="id_produk"></td>
     </tr>
 <tr>
     <td>Nama Produk</td>
