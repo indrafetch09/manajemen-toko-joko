@@ -353,10 +353,10 @@ $total_rows = $count_stmt->fetchColumn();
                                                         <td><?php echo number_format($row['harga'] ?? '', 0, ',', '.'); ?></td>
                                                         <td>
                                                             <a href="/admin/edit?id=<?php echo urlencode($row['id_produk']); ?>">
-                                                                <button class="btn btn-inverse-success">Edit</button>
+                                                                <button class="btn btn-inverse-success">Update</button>
                                                             </a>
                                                             <a href="/admin/hapus?id=<?php echo urlencode($row['id_produk']); ?>">
-                                                                <button class="btn btn-inverse-danger">Delete</button>
+                                                                <button class="btn btn-inverse-danger">Hapus</button>
                                                             </a>
                                                         </td>
                                                     </tr>

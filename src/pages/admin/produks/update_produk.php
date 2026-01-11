@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . "/../../../config/database.php";
+include __DIR__ . '/../../../config/database.php';
 
 $id = $_POST['id_produk'] ?? null;
 $nama = trim($_POST['nama_produk'] ?? '');

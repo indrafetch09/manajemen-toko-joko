@@ -1,21 +1,18 @@
 <?php
-include __DIR__ . "/../../../config/database.php";
+include __DIR__ . '/../../../config/database.php';
 
 $nama_produk = $_POST['nama_produk'] ?? '';
 $stok = $_POST['stok'] ?? '';
 $harga = $_POST['harga'] ?? '';
 
 // TODO: Validation modals
-if ($nama_produk === '') {
-    die('Data nama tidak boleh kosong');
-} else if ($stok === '') {
-    die('Data Stok tidak boleh kosong');
-} elseif ($harga === '') {
-    die('Data Harga tidak boleh kosong');
+if (!$nama === '') {
+    header('Location: /admin/produk?error=missing_data');
+    exit;
 }
 
 try {
-    $stmt = $pdo->prepare("INSERT INTO produks (nama_produk, stok, harga) VALUES (:nama_produk, :stok, :harga)");
+    $stmt = $pdo->prepare('INSERT INTO produks (nama_produk, stok, harga) VALUES (:nama_produk, :stok, :harga)');
     $stmt->bindParam(':nama_produk', $nama_produk);
     $stmt->bindParam(':harga', $harga);
     $stmt->bindParam(':stok', $stok);
@@ -25,5 +22,5 @@ try {
     exit;
 }
 
-header('Location: produk');
+header('Location: /admin/produk');
 exit;
