@@ -415,7 +415,10 @@
                             <label class="badge badge-info">On hold</label>
                           </td>
                           <td>
-                            <button class="btn btn-outline-primary">View</button>
+                            <a href="#">
+                              <button class="btn btn-outline-primary">View</button>
+
+                            </a>
                           </td>
                         </tr>
                         <tr>

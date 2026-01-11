@@ -15,7 +15,7 @@ switch ($path) {
 
     // admin
     case '/admin';
-        require __DIR__ . $page . '/admin/produks/dashboard.php';
+        require __DIR__ . $page . '/admin/dashboard.php';
         break;
     case '/admin/produk';
         require __DIR__ . $page . '/admin/produks/tampilan_produk.php';

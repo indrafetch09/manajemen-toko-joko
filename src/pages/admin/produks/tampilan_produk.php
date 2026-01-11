@@ -1,7 +1,6 @@
 <?php
 include __DIR__ . '/../../../config/database.php';
 
-// Get optional id from query string
 $id = isset($_GET['id']) ? $_GET['id'] : null;
 
 if ($id !== null) {
@@ -12,6 +11,11 @@ if ($id !== null) {
     $stmt = $pdo->query("SELECT * FROM produks");
     $rows = $stmt->fetchAll();
 }
+
+$count_sql = "SELECT COUNT(*) FROM produks WHERE 1";
+$count_stmt = $pdo->query($count_sql);
+
+$total_rows = $count_stmt->fetchColumn();
 ?>
 
 <!DOCTYPE html>
@@ -21,37 +25,16 @@ if ($id !== null) {
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Joko Admin | Admin</title>
+    <title>Joko Admin | List Produk</title>
     <!-- plugins:css -->
     <?php require_once __DIR__ . '/../../../config/paths.php'; ?>
     <link rel="stylesheet" href="<?php echo asset('vendors/mdi/css/materialdesignicons.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo asset('vendors/css/vendor.bundle.base.css'); ?>">
     <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="<?php echo asset('css/vertical-layout-light/style.css'); ?>">
     <!-- endinject -->
     <link rel="shortcut icon" href="<?php echo asset('images/favicon.ico'); ?>" />
-    <?php
-    $gmaps_key = '';
-    // vendor/autoload.php is at project root; adjust path from this file
-    $autoload = __DIR__ . '/../../../vendor/autoload.php';
-    if (file_exists($autoload)) {
-        require_once $autoload;
-        try {
-            $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__, 3));
-            $dotenv->safeLoad();
-        } catch (Exception $e) {
-        }
-        $gmaps_key = getenv('GMAPS_API_KEY') ?: '';
-    } else {
-        $gmaps_key = getenv('GMAPS_API_KEY') ?: '';
-    }
-    ?>
-    <script>
-        window.GMAPS_API_KEY = '<?php echo htmlspecialchars($gmaps_key, ENT_QUOTES); ?>';
-    </script>
 </head>
 
 <body>
@@ -77,7 +60,7 @@ if ($id !== null) {
                 </ul>
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item dropdown me-1">
-                        <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center"
+                        <a class="nav-link count_sql-indicator dropdown-toggle d-flex justify-content-center align-items-center"
                             id="messageDropdown" href="#" data-bs-toggle="dropdown">
                             <i class="mdi mdi-email mx-0"></i>
                         </a>
@@ -122,7 +105,7 @@ if ($id !== null) {
                         </div>
                     </li>
                     <li class="nav-item dropdown me-4">
-                        <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center"
+                        <a class="nav-link count_sql-indicator dropdown-toggle d-flex align-items-center justify-content-center"
                             id="notificationDropdown" href="#" data-bs-toggle="dropdown">
                             <i class="mdi mdi-bell mx-0"></i>
                         </a>
@@ -327,15 +310,26 @@ if ($id !== null) {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/produk">
-                            <i class="mdi mdi-puzzle menu-icon"></i>
-                            <span class="menu-title">Lihat Produk</span>
+                            <i class="mdi mdi-package-variant-closed menu-icon"></i>
+                            <span class="menu-title">List Produk</span>
                         </a>
                     </li>
             </nav>
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
+                    <a href="/admin/input">
+                        <button type="button" class="mdi mdi-plus btn btn-primary" style="margin-bottom: 12px;">
+                            Input Produk
+                        </button>
+                    </a>
+                    <div>
+                        <strong>
+                            Total Produk: <?php echo $total_rows; ?>
+                        </strong>
+                    </div>
                     <div class="card">
+
                         <div class="card-body">
                             <h4 class="card-title">List Produk</h4>
                             <div class="row">
@@ -357,11 +351,14 @@ if ($id !== null) {
                                                         <td><?php echo htmlspecialchars($row['id_produk'] ?? '', ENT_QUOTES); ?></td>
                                                         <td><?php echo htmlspecialchars($row['nama_produk'] ?? '', ENT_QUOTES); ?></td>
                                                         <td><?php echo htmlspecialchars($row['stok'] ?? '', ENT_QUOTES); ?></td>
-                                                        <td><?php echo htmlspecialchars($row['harga'] ?? '', ENT_QUOTES); ?></td>
+                                                        <td><?php echo number_format($row['harga'] ?? '', 0, ',', '.'); ?></td>
                                                         <td>
-                                                            <a href="/admin/produk/edit_produk.php?id=<?php echo urlencode($row['id']); ?>">Edit</a>
-                                                            |
-                                                            <a href="/admin/produk/hapus_produk.php?id=<?php echo urlencode($row['id']); ?>">Delete</a>
+                                                            <a href="/admin/produks/edit_produk.php?id=<?php echo urlencode($row['id_produk']); ?>">
+                                                                <button class="btn btn-inverse-success">Edit</button>
+                                                            </a>
+                                                            <a href="/admin/produks/hapus_produk.php?id=<?php echo urlencode($row['id_produk']); ?>">
+                                                                <button class="btn btn-inverse-danger">Delete</button>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
@@ -375,12 +372,7 @@ if ($id !== null) {
                 </div>
                 <!-- content-wrapper ends -->
                 <!-- partial:../../partials/_footer.html -->
-                <footer class="footer">
-                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2024 <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
-                    </div>
-                </footer>
+                <?php require __DIR__ . '/../../../layout/footer.php'; ?>
                 <!-- partial -->
             </div>
             <!-- main-panel ends -->
