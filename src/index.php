@@ -13,7 +13,7 @@ switch ($path) {
         require __DIR__ . $page . '/register.php';
         break;
     case '/admin';
-        require __DIR__ . $page . '/admin/menus/index.php';
+        require __DIR__ . $page . '/admin/menus/dashboard.php';
         break;
     case '/admin/input';
         require __DIR__ . $page . '/admin/menus/input_produk.php';
