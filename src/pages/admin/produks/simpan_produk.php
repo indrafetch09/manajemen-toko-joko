@@ -5,6 +5,7 @@ $nama_produk = $_POST['nama_produk'] ?? '';
 $stok = $_POST['stok'] ?? '';
 $harga = $_POST['harga'] ?? '';
 
+// TODO: Validation modals
 if ($nama_produk === '') {
     die('Data nama tidak boleh kosong');
 } else if ($stok === '') {

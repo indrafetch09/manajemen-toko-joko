@@ -1,16 +1,34 @@
 <?php
-include "database.php";
+include __DIR__ . "/../../../config/database.php";
 
-$id_produk = $_POST['id_produk'];
-$nama_produk = $_POST['nama_produk'];
-$stok = $_POST['stok'];
-$harga = $_POST['harga'];
+$id = $_POST['id_produk'] ?? null;
+$nama = trim($_POST['nama_produk'] ?? '');
+$stok = trim($_POST['stok'] ?? '');
+$harga = trim($_POST['harga'] ?? '');
 
-$query = mysqli_query($koneksi, "UPDATE menus SET
-        nama_produk ='$nama_produk'
-        stok ='$stok'
-        harga='$harga'
-        WHERE id_produk='$id_produk'");
+if (! $id || $nama === '') {
+        header('Location: /admin/produk?error=missing_data');
+        exit;
+}
 
-header('location:index.php')
-?>
+try {
+        $stmt = $pdo->prepare(
+                'UPDATE produks 
+                SET nama_produk = :nama_produk, 
+                stok = :stok, 
+                harga = :harga
+                WHERE id_produk = :id_produk'
+        );
+
+        $stmt->execute([
+                'nama_produk' => $nama,
+                'stok' => $stok,
+                'harga' => $harga,
+                'id_produk' => $id,
+        ]);
+} catch (PDOException $e) {
+        die('Failed ' . $e->getMessage());
+}
+
+header('Location: /admin/produk');
+exit;

@@ -329,7 +329,6 @@ $total_rows = $count_stmt->fetchColumn();
                         </strong>
                     </div>
                     <div class="card">
-
                         <div class="card-body">
                             <h4 class="card-title">List Produk</h4>
                             <div class="row">
@@ -353,10 +352,10 @@ $total_rows = $count_stmt->fetchColumn();
                                                         <td><?php echo htmlspecialchars($row['stok'] ?? '', ENT_QUOTES); ?></td>
                                                         <td><?php echo number_format($row['harga'] ?? '', 0, ',', '.'); ?></td>
                                                         <td>
-                                                            <a href="/admin/produks/edit_produk.php?id=<?php echo urlencode($row['id_produk']); ?>">
+                                                            <a href="/admin/edit?id=<?php echo urlencode($row['id_produk']); ?>">
                                                                 <button class="btn btn-inverse-success">Edit</button>
                                                             </a>
-                                                            <a href="/admin/produks/hapus_produk.php?id=<?php echo urlencode($row['id_produk']); ?>">
+                                                            <a href="/admin/hapus?id=<?php echo urlencode($row['id_produk']); ?>">
                                                                 <button class="btn btn-inverse-danger">Delete</button>
                                                             </a>
                                                         </td>
