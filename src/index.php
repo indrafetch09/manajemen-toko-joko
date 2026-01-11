@@ -13,22 +13,22 @@ switch ($path) {
         require __DIR__ . $page . '/register.php';
         break;
     case '/admin';
-        require __DIR__ . $page . '/admin/menus/dashboard.php';
+        require __DIR__ . $page . '/admin/produks/dashboard.php';
         break;
     case '/admin/input';
-        require __DIR__ . $page . '/admin/menus/input_produk.php';
+        require __DIR__ . $page . '/admin/produks/input_produk.php';
         break;
     case '/admin/edit';
-        require __DIR__ . $page . '/admin/menus/edit_produk.php';
+        require __DIR__ . $page . '/admin/produks/edit_produk.php';
         break;
     case '/admin/update';
-        require __DIR__ . $page . '/admin/menus/update_produk.php';
+        require __DIR__ . $page . '/admin/produks/update_produk.php';
         break;
     case '/admin/simpan';
-        require __DIR__ . $page . '/admin/menus/simpan_produk.php';
+        require __DIR__ . $page . '/admin/produks/simpan_produk.php';
         break;
     case '/admin/hapus';
-        require __DIR__ . $page . '/admin/menus/hapus_produk.php';
+        require __DIR__ . $page . '/admin/produks/hapus_produk.php';
         break;
     default:
         header("HTTP 404 NOT FOUND");
