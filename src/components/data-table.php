@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Joko Admin</title>
+  <title>Joko Admin | Dev</title>
   <!-- plugins:css -->
   <?php require_once __DIR__ . '/../config/paths.php'; ?>
   <link rel="stylesheet" href="<?php echo asset('vendors/mdi/css/materialdesignicons.min.css'); ?>">
