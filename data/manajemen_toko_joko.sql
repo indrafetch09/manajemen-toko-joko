@@ -40,10 +40,10 @@ CREATE TABLE `users` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menus`
+-- Table structure for table `produks`
 --
 
-CREATE TABLE `menus` (
+CREATE TABLE `produks` (
   `id_produk` int(11) NOT NULL,
   `nama_produk` varchar(40) DEFAULT NULL,
   `stok` int(11) DEFAULT NULL,
@@ -52,10 +52,10 @@ CREATE TABLE `menus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `menus`
+-- Dumping data for table `produks`
 --
 
-INSERT INTO `menus` (`id_produk`, `nama_produk`, `stok`, `harga`, `created_by`) VALUES
+INSERT INTO `produks` (`id_produk`, `nama_produk`, `stok`, `harga`, `created_by`) VALUES
 (1, 'Laptop Gaming', 10, 15000000, NULL),
 (2, 'Mouse Wireless', 50, 250000, NULL),
 (3, 'Keyboard Mekanik', 25, 750000, NULL),
@@ -67,9 +67,9 @@ INSERT INTO `menus` (`id_produk`, `nama_produk`, `stok`, `harga`, `created_by`) 
 --
 
 --
--- Indexes for table `menus`
+-- Indexes for table `produks`
 --
-ALTER TABLE `menus`
+ALTER TABLE `produks`
   ADD PRIMARY KEY (`id_produk`),
   ADD KEY `idx_created_by` (`created_by`);
 
@@ -95,10 +95,10 @@ ALTER TABLE `users`
 --
 
 --
--- Constraints for table `menus`
+-- Constraints for table `produks`
 --
-ALTER TABLE `menus`
-  ADD CONSTRAINT `fk_menus_users` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`) ON DELETE SET NULL;
+ALTER TABLE `produks`
+  ADD CONSTRAINT `fk_produks_users` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`) ON DELETE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

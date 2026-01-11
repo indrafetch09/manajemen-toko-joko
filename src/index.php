@@ -12,8 +12,13 @@ switch ($path) {
     case '/register';
         require __DIR__ . $page . '/register.php';
         break;
+
+    // admin
     case '/admin';
         require __DIR__ . $page . '/admin/produks/dashboard.php';
+        break;
+    case '/admin/produk';
+        require __DIR__ . $page . '/admin/produks/tampilan_produk.php';
         break;
     case '/admin/input';
         require __DIR__ . $page . '/admin/produks/input_produk.php';
@@ -24,10 +29,10 @@ switch ($path) {
     case '/admin/update';
         require __DIR__ . $page . '/admin/produks/update_produk.php';
         break;
-    case '/admin/simpan';
+    case '/admin/save';
         require __DIR__ . $page . '/admin/produks/simpan_produk.php';
         break;
-    case '/admin/hapus';
+    case '/admin/delete';
         require __DIR__ . $page . '/admin/produks/hapus_produk.php';
         break;
     default:

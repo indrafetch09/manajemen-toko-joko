@@ -4,12 +4,15 @@ use Dotenv\Dotenv;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
+// Locate project root (two levels up from src/config) where the .env is placed
+$projectRoot = dirname(__DIR__, 2);
+
 // load .env file validation
 try {
-    $dotenv = Dotenv::createImmutable(__DIR__);
+    $dotenv = Dotenv::createImmutable($projectRoot);
     $dotenv->load();
 } catch (\Dotenv\Exception\InvalidPathException $e) {
-    die("Invalid load .env file " . $e->getMessage());
+    die("Invalid load .env file in $projectRoot: " . $e->getMessage());
 }
 
 // setting .env
@@ -30,7 +33,6 @@ $options = [
 // validate the conn with PDO
 try {
     $pdo = new PDO($dsn, $dbuser, $dbpass, $options);
-    echo "database connected successfull";
 } catch (\PDOException $e) {
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }

@@ -370,7 +370,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admin">
+            <a class="nav-link" href="/admin/produk">
               <i class="mdi mdi-puzzle menu-icon"></i>
               <span class="menu-title">Lihat Produk</span>
             </a>
