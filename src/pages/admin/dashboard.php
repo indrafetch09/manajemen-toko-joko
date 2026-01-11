@@ -1,10 +1,8 @@
 <?php
-// Simple admin dashboard example — protected by JWT role check
 require_once __DIR__ . '/../../handlers/auth/auth.php';
 
-$decoded = require_admin(); // exits 401/403 if not allowed
+$decoded = require_admin();
 
-// decoded contains token claims, e.g. $decoded->sub and $decoded->role
 header('Content-Type: text/html; charset=utf-8');
 ?>
 <!doctype html>

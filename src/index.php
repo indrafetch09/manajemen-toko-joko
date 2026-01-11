@@ -30,5 +30,26 @@ switch ($path) {
     case '/admin/hapus';
         require __DIR__ . $page . '/admin/menus/hapus_produk.php';
         break;
+    default:
+        header("HTTP 404 NOT FOUND");
+        break;
 }
-?> 
+
+// DEV ONLY ROUTES
+$devPage = '/components';
+switch ($path) {
+    case '/dev/buttons':
+        require __DIR__ . $devPage . '/buttons.php';
+        break;
+    case '/dev/tables':
+        require __DIR__ . $devPage . '/data-table.php';
+        break;
+    case '/dev/icons':
+        require __DIR__ . $devPage . '/mdi.php';
+        break;
+
+    default:
+        header("HTTP 404 NOT FOUND");
+        break;
+}
+?>
