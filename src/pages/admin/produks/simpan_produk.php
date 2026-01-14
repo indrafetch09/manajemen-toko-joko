@@ -1,12 +1,12 @@
 <?php
-include __DIR__ . '/../../../config/database.php';
+include_once __DIR__ . '/../../../config/database.php';
 
 $nama_produk = $_POST['nama_produk'] ?? '';
 $stok = $_POST['stok'] ?? '';
 $harga = $_POST['harga'] ?? '';
 
 // TODO: Validation modals
-if (!$nama === '') {
+if (empty($nama) || empty($stok) || empty($harga)) {
     header('Location: /admin/produk?error=missing_data');
     exit;
 }

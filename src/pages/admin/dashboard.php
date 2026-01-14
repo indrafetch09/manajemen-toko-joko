@@ -10,10 +10,6 @@
   <?php require_once __DIR__ . '/../../config/paths.php'; ?>
   <link rel="stylesheet" href="<?php echo asset('vendors/mdi/css/materialdesignicons.min.css'); ?>">
   <link rel="stylesheet" href="<?php echo asset('vendors/css/vendor.bundle.base.css'); ?>">
-  <!-- endinject -->
-  <!-- Plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
   <link rel="stylesheet" href="<?php echo asset('css/vertical-layout-light/style.css'); ?>">
   <!-- endinject -->
   <link rel="shortcut icon" href="<?php echo asset('images/favicon.ico'); ?>" />

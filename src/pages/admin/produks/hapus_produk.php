@@ -1,17 +1,23 @@
 <?php
-include __DIR__ . '/../../../config/database.php';
+include_once __DIR__ . '/../../../config/database.php';
 
-if (!isset($_GET['id_produk']) || $_GET['id_produk'] === '') {
+// var_dump($_GET);
+// exit;
+
+$id = $_GET['id_produk'] ?? null;
+
+if (!$id || $id === '') {
     header('Location: /admin/produk?error=missing_data');
     exit;
 }
 
-$id = $_GET['id_produk'];
-
 try {
-    $stmt = $pdo->prepare('DELETE FROM produks WHERE id_produk = :id');
+    $stmt = $pdo->prepare(
+        'DELETE FROM produks 
+        WHERE id_produk = :id_produk'
+    );
     $stmt->execute([
-        ':id' => $id
+        'id_produk' => $id
     ]);
 
     if ($stmt->rowCount() === 0) {
@@ -19,7 +25,7 @@ try {
         exit;
     }
 } catch (PDOException $e) {
-    header('Location: /admin/produk?error=delete_failed');
+    die('Gagal menghapus produk ' . $e->getMessage());
     exit;
 }
 
